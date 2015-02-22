@@ -1,4 +1,4 @@
-package tk.skuro.idea.orgmode.psi;
+package tk.skuro.idea.orgmode.psi.impl;
 
 import tk.skuro.idea.orgmode.OrgFileType;
 import tk.skuro.idea.orgmode.OrgLanguage;

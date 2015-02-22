@@ -1,5 +1,9 @@
 /**
  *    Grammar for Org Mode!
+ *
+ * @author Adriean Khisbe
+ *
+ * Made following the orgmode syntax draft. (copy in the repo)
  */
 
 /*
@@ -39,27 +43,29 @@
  *   In Intellij, right-click the gen directory and choose Mark Directory As > Sources.
  */
 	   
-	   
-	   
+
 {
-     /** Params code généré */
-      parserClass="com.haskforce.parser.HaskellParser"
-      parserUtilClass="com.haskforce.psi.HaskellParserUtilBase"
+    /** Params code généré */
+      parserClass="tk.skuro.idea.orgmode.parser.OrgParser"
+      parserUtilClass="com.haskforce.psi.HaskellParserUtilBase" //FIXME WAHY
        
-      implements="com.haskforce.psi.HaskellCompositeElement"
+      implements="com.haskforce.psi.HaskellCompositeElement" //TODO
       extends="com.haskforce.psi.impl.HaskellCompositeElementImpl"
        
       psiClassPrefix="Org"
       psiImplClassSuffix="Impl"
-      psiPackage="com.haskforce.psi" //FIXME!!!!!!!!!!!!!!!!!
-      psiImplPackage="com.haskforce.psi.impl"
-       
+      psiPackage="tk.skuro.idea.orgmode.psi"
+      psiImplPackage="tk.skuro.idea.orgmode.psi.impl"
+
+       //TODO: see if element type in psi or in parser?
       elementTypeHolderClass="com.haskforce.psi.HaskellTypes"
       elementTypeClass="com.haskforce.psi.HaskellElementType"
       tokenTypeClass="com.haskforce.psi.HaskellTokenType"
-       
+
+       //TODO: clone
       psiImplUtilClass="com.haskforce.psi.impl.HaskellPsiImplUtil"
-       
+
+       // TODO: search what does varid and co are -->> seeems to be rule?
       implements("varid|conid")="com.haskforce.psi.HaskellNamedElement"
       implements("qqblob")="com.intellij.psi.PsiLanguageInjectionHost"
       extends("varid|conid")="com.haskforce.psi.impl.HaskellNamedStubbedPsiElementBase<?>"
@@ -69,8 +75,8 @@
       
        
        
-      /** Tokens **/ 
-      tokens=[
+    /** Tokens **/
+    tokens=[
       
       
          ]

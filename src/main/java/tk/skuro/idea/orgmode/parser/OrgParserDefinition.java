@@ -1,8 +1,8 @@
 package tk.skuro.idea.orgmode.parser;
 
 import tk.skuro.idea.orgmode.OrgLanguage;
-import tk.skuro.idea.orgmode.psi.OrgFileImpl;
-import tk.skuro.idea.orgmode.psi.OrgPsiElementImpl;
+import tk.skuro.idea.orgmode.psi.impl.OrgFileImpl;
+import tk.skuro.idea.orgmode.psi.impl.OrgPsiElementImpl;
 
 import org.jetbrains.annotations.NotNull;
 
