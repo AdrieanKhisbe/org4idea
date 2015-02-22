@@ -4,7 +4,8 @@ package tk.skuro.idea.orgmode.parser;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
-import static tk.skuro.idea.orgmode.parser.OrgTokenTypes.*;
+
+import static tk.skuro.idea.orgmode.psi.OrgTokenTypes.*;
 
 // TODO: see if could reuse org lexer src/org_lexer.l
 

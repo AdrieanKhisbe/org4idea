@@ -47,29 +47,34 @@
 {
     /** Params code généré */
       parserClass="tk.skuro.idea.orgmode.parser.OrgParser"
-      parserUtilClass="com.haskforce.psi.HaskellParserUtilBase" //FIXME WAHY
+      // parserUtilClass For external rules
        
-      implements="com.haskforce.psi.HaskellCompositeElement" //TODO
-      extends="com.haskforce.psi.impl.HaskellCompositeElementImpl"
-       
+      implements="tk.skuro.idea.orgmode.psi.OrgCompositeElement"
+      extends="tk.skuro.idea.orgmode.psi.impl.OrgCompositeElementImpl"
+
       psiClassPrefix="Org"
       psiImplClassSuffix="Impl"
       psiPackage="tk.skuro.idea.orgmode.psi"
       psiImplPackage="tk.skuro.idea.orgmode.psi.impl"
 
-       //TODO: see if element type in psi or in parser?
-      elementTypeHolderClass="com.haskforce.psi.HaskellTypes"
-      elementTypeClass="com.haskforce.psi.HaskellElementType"
-      tokenTypeClass="com.haskforce.psi.HaskellTokenType"
+      elementTypeHolderClass="tk.skuro.idea.orgmode.psi.OrgTokenTypes"
+      elementTypeClass="tk.skuro.idea.orgmode.psi.OrgElementType"
+      tokenTypeClass="com.haskforce.psi.HaskellTokenType" // TODO
 
-       //TODO: clone
+       //TODO: clone §See: do we need it?? (seems so in Erlang too=)
+      // "Source of the methods pointed out in Haskell.bnf."
       psiImplUtilClass="com.haskforce.psi.impl.HaskellPsiImplUtil"
 
-       // TODO: search what does varid and co are -->> seeems to be rule?
-      implements("varid|conid")="com.haskforce.psi.HaskellNamedElement"
-      implements("qqblob")="com.intellij.psi.PsiLanguageInjectionHost"
-      extends("varid|conid")="com.haskforce.psi.impl.HaskellNamedStubbedPsiElementBase<?>"
-      elementTypeFactory("varid|conid")="com.haskforce.psi.impl.HaskellElementTypeFactory.factory"
+     /*
+         Specific Implem for specific ast node
+        implements/extends argument refer to rules
+      */
+//      implements("varid|conid")="com.haskforce.psi.HaskellNamedElement"
+
+      // TODO: reuse for source block :)
+      // implements("qqblob")="com.intellij.psi.PsiLanguageInjectionHost"
+//      extends("varid|conid")="com.haskforce.psi.impl.HaskellNamedStubbedPsiElementBase<?>"
+//      elementTypeFactory("varid|conid")="com.haskforce.psi.impl.HaskellElementTypeFactory.factory"
        
       generate=[tokenAccessors="yes"]
       

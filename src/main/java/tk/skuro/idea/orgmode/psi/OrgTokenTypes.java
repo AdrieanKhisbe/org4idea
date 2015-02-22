@@ -1,8 +1,9 @@
-package tk.skuro.idea.orgmode.parser;
+package tk.skuro.idea.orgmode.psi;
 
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
+import tk.skuro.idea.orgmode.psi.OrgElementType;
 
 /**
  * Org Tokens for lexing
@@ -11,8 +12,10 @@ import com.intellij.psi.tree.TokenSet;
  * @since 0.1
  */
 public interface OrgTokenTypes {
-    // TODO: package rego
+
     // maybe make a single declaration
+    // psf implicite!
+    // TODO: introduce type vs tokentype FIXME NOW
 
     public final static IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
     public final static IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;

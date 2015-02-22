@@ -1,4 +1,4 @@
-package tk.skuro.idea.orgmode.parser;
+package tk.skuro.idea.orgmode.psi;
 
 import tk.skuro.idea.orgmode.OrgLanguage;
 

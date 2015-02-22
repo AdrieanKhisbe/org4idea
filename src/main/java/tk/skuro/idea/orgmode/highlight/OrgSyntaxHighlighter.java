@@ -1,7 +1,7 @@
 package tk.skuro.idea.orgmode.highlight;
 
 import tk.skuro.idea.orgmode.parser.OrgLexer;
-import tk.skuro.idea.orgmode.parser.OrgTokenTypes;
+import tk.skuro.idea.orgmode.psi.OrgTokenTypes;
 
 import java.util.HashMap;
 import java.util.Map;
