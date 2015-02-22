@@ -1,0 +1,93 @@
+/**
+ *    Grammar for Org Mode!
+ */
+
+/*
+ * Notes from Haskell.bnf of Cary M. Robbins
+ *
+ * WARNING: BE CAREFUL WITH PERFORMANCE WHEN EDITING THIS FILE.
+ *
+ * Pinning might alter what the parser accepts.
+ * Mental model: red cut in logic programming.
+ *
+ * The parser test suite itself with 40 small examples can literally take 500%
+ * longer time.
+ *
+ * Useful patterns and anti-patterns:
+ *
+ * Good: private impdecls ::= impdecl [semi impdecls]
+ *
+ * Bad: private impdecls ::= impdecl semi impdecls
+ *                        | impdecls
+ *
+ * Good: funorpatdecl ::= (funlhs | pat) rhs
+ *
+ * Bad: funorpatdecl ::= funlhs rhs
+ *                    | pat rhs
+ */
+
+/* TODO: update and automate this!! FIXME
+ * To generate sources from this file -
+ *   Delete the gen/ directory.
+ *   Use Command + Shift + G to generate parser in gen/ directory.
+ *
+ *   The lexer belonging to this parser is located in
+ *   highlighting/_HaskellSyntaxHighlightingLexer.flex. See that file for
+ *   instructions on how to generate it.
+ *
+ *   Be sure to add the gen/ directory to your sources.
+ *   In Intellij, right-click the gen directory and choose Mark Directory As > Sources.
+ */
+	   
+	   
+	   
+{
+     /** Params code généré */
+      parserClass="com.haskforce.parser.HaskellParser"
+      parserUtilClass="com.haskforce.psi.HaskellParserUtilBase"
+       
+      implements="com.haskforce.psi.HaskellCompositeElement"
+      extends="com.haskforce.psi.impl.HaskellCompositeElementImpl"
+       
+      psiClassPrefix="Org"
+      psiImplClassSuffix="Impl"
+      psiPackage="com.haskforce.psi" //FIXME!!!!!!!!!!!!!!!!!
+      psiImplPackage="com.haskforce.psi.impl"
+       
+      elementTypeHolderClass="com.haskforce.psi.HaskellTypes"
+      elementTypeClass="com.haskforce.psi.HaskellElementType"
+      tokenTypeClass="com.haskforce.psi.HaskellTokenType"
+       
+      psiImplUtilClass="com.haskforce.psi.impl.HaskellPsiImplUtil"
+       
+      implements("varid|conid")="com.haskforce.psi.HaskellNamedElement"
+      implements("qqblob")="com.intellij.psi.PsiLanguageInjectionHost"
+      extends("varid|conid")="com.haskforce.psi.impl.HaskellNamedStubbedPsiElementBase<?>"
+      elementTypeFactory("varid|conid")="com.haskforce.psi.impl.HaskellElementTypeFactory.factory"
+       
+      generate=[tokenAccessors="yes"]
+      
+       
+       
+      /** Tokens **/ 
+      tokens=[
+      
+      
+         ]
+         
+}
+        
+         
+/** DEFINITIONS!!  */
+    
+//document ::= section headline*
+         // HERE
+
+/* Greater Elements  */
+         
+
+/* Elements          */
+    
+    
+/* Objects           */
+         
