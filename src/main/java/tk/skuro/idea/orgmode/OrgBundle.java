@@ -10,12 +10,16 @@ import org.jetbrains.annotations.PropertyKey;
 import com.intellij.CommonBundle;
 
 /**
+ * Bundle with string messages for (future) internationalisation
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */
 public class OrgBundle {
+
     @NonNls
     protected static final String PATH_TO_BUNDLE = "messages.OrgBundle";
+
     private static Reference<ResourceBundle> reference;
 
     private OrgBundle() {

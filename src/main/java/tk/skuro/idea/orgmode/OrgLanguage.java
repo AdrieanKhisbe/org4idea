@@ -12,6 +12,7 @@ public final class OrgLanguage extends Language {
 
     public static final String ORG_LANGUAGE_ID = "OrgMode";
     // see: http://lists.gnu.org/archive/html/emacs-diffs/2011-01/msg00290.html
+
     public static final String ORG_LANGUAGE_MIME_TYPE = "text/x-org";
 
     public static final OrgLanguage INSTANCE = new OrgLanguage();

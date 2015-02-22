@@ -5,8 +5,13 @@ import javax.swing.Icon;
 import com.intellij.openapi.util.IconLoader;
 
 /**
+ * Org icones
+ *  
  * @author Carlo Sciolla
  */
 public interface OrgIcons {
-    static final Icon ORG_ICON = IconLoader.getIcon("/org/fileType.png");
+
+    Icon ORG_ICON = IconLoader.getIcon("/icons/fileType.png");
+
+    //TODO: icons for headlines
 }

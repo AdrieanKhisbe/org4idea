@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 
 /**
+ * Extension of a {@link LanguageFileType} for org-mode
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */

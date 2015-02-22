@@ -1,16 +1,15 @@
 #+TITLE: org4idea: edit org-mode files from IntelliJ
 
-[[media/screenshot_new.png]]
+[[src/main/resources/screenshots/highlighting_new.png]]
 
 * Introduction
 
 This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ.
 
- At the moment, only  support for syntax highlight of comments and outlines is provided.
-
 *org4idea* is still in its /inception / pre-alpha / here-be-dragons phase/. Use at your own risk.
 
 * Pending basic features
+# TODO: make a trello board..
 ** Basic Editing
 These feature only requires some Intellij customisation of the plugin, and basic lexing rules
 
@@ -36,6 +35,7 @@ These feature only requires some Intellij customisation of the plugin, and basic
 - Line marker
 
 * Building from source
+# todo: make a real process
 - setup :: Open the module setting and select /Intellij IDEA Plugin SDK/ as project SDK
 - run/test :: Use /Run Configuration/ to run the plugin and tests
   # when there will be some
