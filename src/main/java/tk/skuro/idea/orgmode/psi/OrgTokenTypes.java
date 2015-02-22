@@ -7,15 +7,13 @@ import tk.skuro.idea.orgmode.psi.OrgElementType;
 
 /**
  * Org Tokens for lexing
+ * TODO: kill with grammar gen
  *
  * @author Carlo Sciolla
  * @since 0.1
  */
 public interface OrgTokenTypes {
-
-    // maybe make a single declaration
     // psf implicite!
-    // TODO: introduce type vs tokentype FIXME NOW
 
     public final static IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
     public final static IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;

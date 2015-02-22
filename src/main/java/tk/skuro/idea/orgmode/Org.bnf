@@ -57,18 +57,16 @@
       psiPackage="tk.skuro.idea.orgmode.psi"
       psiImplPackage="tk.skuro.idea.orgmode.psi.impl"
 
-      elementTypeHolderClass="tk.skuro.idea.orgmode.psi.OrgTokenTypes"
+      elementTypeHolderClass="tk.skuro.idea.orgmode.psi.OrgTypes" // file is generated!
       elementTypeClass="tk.skuro.idea.orgmode.psi.OrgElementType"
-      tokenTypeClass="com.haskforce.psi.HaskellTokenType" // TODO
+      tokenTypeClass="tk.skuro.idea.orgmode.psi.OrgTokenType"
 
-       //TODO: clone §See: do we need it?? (seems so in Erlang too=)
-      // "Source of the methods pointed out in Haskell.bnf."
-      psiImplUtilClass="com.haskforce.psi.impl.HaskellPsiImplUtil"
+      psiImplUtilClass="tk.skuro.idea.orgmode.psi.impl.OrgPsiImplUtil"
 
-     /*
+    /*
          Specific Implem for specific ast node
         implements/extends argument refer to rules
-      */
+    */
 //      implements("varid|conid")="com.haskforce.psi.HaskellNamedElement"
 
       // TODO: reuse for source block :)
