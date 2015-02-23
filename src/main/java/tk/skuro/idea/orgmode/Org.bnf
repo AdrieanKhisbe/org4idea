@@ -80,10 +80,12 @@
        
        
     /** Tokens **/
+    // only used for syntax coloring and c §check
     tokens=[
-      
+      leading_stars="regexp:^\*+ "
+      leading_whitespace="regexp:^\s*"
       //TODO !!!
-      
+      comment_opening="regexp:^\s+# "
     ]
          
 }
@@ -91,9 +93,36 @@
          
 /** DEFINITIONS!!  */
     
-//document ::= section headline*
-// HERE
+document ::= section headline*
 
+headline ::= header section headline*
+
+//////
+header ::= leading_stars [ header_keyword ' '+] [ header_priority ' '+] title [ tags ]
+
+leading_stars ::= "regexp:^\*+ "
+// todo: check non match. (en gros: niveau un de * titi à * toto
+header_keyword ::= "TODO"
+header_priority ::= '[#' ']' //TODO: choice in list
+title ::=  "regexp:[[:alnum:]_@#% ]+"
+tags ::= ':'( "regexp:[[:alnum:]_@#%]+" ':')+ //todo: see how to retrieve value
+
+section ::= ('\n'* element)*
+element ::= paragraph | affiliated_keyword | comments | code_ligne
+
+comments ::= comment+ //todo: see how to block them?
+comment ::= "regexp:^\s+# " "[^\n]*"
+
+affiliated_keyword ::= '#+' "regexp:[A-Za-z]+" ':' [' '] // "regexp:[_[:alnum:]\s]+"  '\n'//todo: later, use object
+// not: afialted, suposed tro be only for list, img.... for now all the "#+KEYWORD
+
+code_ligne ::= "regexp:\s+" ':' "regexp:[^\n]"
+
+paragraph ::= (object "regexp:\s+" )+ '\n\n'
+
+object ::='later'
+
+// TODO: dispatch later
 /* Greater Elements  */
          
 
