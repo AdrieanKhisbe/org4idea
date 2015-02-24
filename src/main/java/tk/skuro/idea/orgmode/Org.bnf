@@ -83,19 +83,21 @@
     // only used for syntax coloring and c §check
     tokens=[
       leading_stars="regexp:^\*+ "
-      leading_whitespace="regexp:^\s*"
+      leading_whitespace="regexp:^[ \f\t]*"
       //TODO !!!
-      comment_opening="regexp:^\s+# "
+      comment_opening="regexp:^[ \f\t]+# "
     ]
          
 }
-        
+
+        //TODO; search whitespace significant in GK
+        // all match as  psi whitespace???
          
 /** DEFINITIONS!!  */
     
-document ::= section headline*
+document ::= section? headline*
 
-headline ::= header section headline*
+headline ::= header section? headline*
 
 //////
 header ::= leading_stars [ header_keyword ' '+] [ header_priority ' '+] title [ tags ]
@@ -104,23 +106,23 @@ leading_stars ::= "regexp:^\*+ "
 // todo: check non match. (en gros: niveau un de * titi à * toto
 header_keyword ::= "TODO"
 header_priority ::= '[#' ']' //TODO: choice in list
-title ::=  "regexp:[[:alnum:]_@#% ]+"
+title ::=  "regexp:[^\r\n]+"
 tags ::= ':'( "regexp:[[:alnum:]_@#%]+" ':')+ //todo: see how to retrieve value
 
 section ::= ('\n'* element)*
 element ::= paragraph | affiliated_keyword | comments | code_ligne
 
-comments ::= comment+ //todo: see how to block them?
-comment ::= "regexp:^\s+# " "[^\n]*"
+comments ::= comment+ //todo: see how to block group them?
+comment ::= "regexp:^[ \f\t]*" '# ' "[^\r\n]*"
 
-affiliated_keyword ::= '#+' "regexp:[A-Za-z]+" ':' [' '] // "regexp:[_[:alnum:]\s]+"  '\n'//todo: later, use object
+affiliated_keyword ::= '#+' "regexp:[A-Za-z]+" ':' [' ']  "regexp:[^\r\n]+" "regexp:[\r\n]"//todo: later, use object
 // not: afialted, suposed tro be only for list, img.... for now all the "#+KEYWORD
 
-code_ligne ::= "regexp:\s+" ':' "regexp:[^\n]"
+code_ligne ::= leading_whitespace ':' "regexp:[^\r\n]+" // ¤ask: good using token?
 
-paragraph ::= (object "regexp:\s+" )+ '\n\n'
+paragraph ::= (object "regexp:[ \f\t]+" )+ '\n\n'
 
-object ::='later'
+object ::="regexp:[[:alnum:]_@#%]+" //TO imporove
 
 // TODO: dispatch later
 /* Greater Elements  */
