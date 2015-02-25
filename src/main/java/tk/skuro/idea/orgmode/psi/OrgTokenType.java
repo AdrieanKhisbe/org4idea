@@ -16,4 +16,8 @@ public class OrgTokenType extends IElementType {
         super(debugId, OrgLanguage.INSTANCE);
     }
 
+    @Override
+    public String toString() {
+        return "OrgTokenType:" + super.toString();
+    }
 }

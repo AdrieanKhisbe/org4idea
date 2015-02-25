@@ -80,8 +80,13 @@
        
        
     /** Tokens **/
-    // only used for syntax coloring and c §check
+    // TODO: add more
+    // TODO: look for token precendence
     tokens=[
+      space='regexp:\s+'
+      keyword="regexp:^[ \f\t]*#+[A-Z_a-z]+:?"
+      word="regexp:\S+"
+      number="regexp:\d+"
       leading_stars="regexp:^\*+ "
       leading_whitespace="regexp:^[ \f\t]*"
       //TODO !!!
@@ -90,11 +95,10 @@
          
 }
 
-        //TODO; search whitespace significant in GK
-        // all match as  psi whitespace???
+//TODO; search whitespace significant in GK : voir comment découper token ren prenant compte fin de ligne
          
 /** DEFINITIONS!!  */
-    
+
 document ::= section? headline*
 
 headline ::= header section? headline*
@@ -106,10 +110,10 @@ leading_stars ::= "regexp:^\*+ "
 // todo: check non match. (en gros: niveau un de * titi à * toto
 header_keyword ::= "TODO"
 header_priority ::= '[#' ']' //TODO: choice in list
-title ::=  "regexp:[^\r\n]+"
+title ::=   word+ // "regexp:[^\r\n]+"
 tags ::= ':'( "regexp:[[:alnum:]_@#%]+" ':')+ //todo: see how to retrieve value
 
-section ::= ('\n'* element)*
+section ::= element+
 element ::= paragraph | affiliated_keyword | comments | code_ligne
 
 comments ::= comment+ //todo: see how to block group them?
