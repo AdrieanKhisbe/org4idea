@@ -31,20 +31,6 @@
  *                    | pat rhs
  */
 
-/* TODO: update and automate this!! FIXME
- * To generate sources from this file -
- *   Delete the gen/ directory.
- *   Use Command + Shift + G to generate parser in gen/ directory.
- *
- *   The lexer belonging to this parser is located in
- *   highlighting/_HaskellSyntaxHighlightingLexer.flex. See that file for
- *   instructions on how to generate it.
- *
- *   Be sure to add the gen/ directory to your sources.
- *   In Intellij, right-click the gen directory and choose Mark Directory As > Sources.
- */
-	   
-
 {
     /** Params code généré */
     parserClass="tk.skuro.idea.orgmode.parser.OrgParser"
@@ -81,16 +67,18 @@
        
     /** Tokens **/
     // TODO: add more
-    // TODO: look for token precendence
+    // FIXME: look for token precendence
     tokens=[
-      space='regexp:\s+'
-      keyword="regexp:^[ \f\t]*#+[A-Z_a-z]+:?"
-      word="regexp:\S+"
-      number="regexp:\d+"
+      newline="regexp:[\r\n]"
+      space='regexp:[ \f\t]+'
       leading_stars="regexp:^\*+ "
-      leading_whitespace="regexp:^[ \f\t]*"
-      //TODO !!!
       comment_opening="regexp:^[ \f\t]+# "
+      leading_whitespace="regexp:^[ \f\t]*"
+
+      keyword="regexp:^[ \f\t]*#+[A-Z_a-z]+:?"
+      word="regexp:\S+" //TO impr!!
+      number="regexp:\d+"
+
     ]
          
 }
@@ -104,29 +92,31 @@ document ::= section? headline*
 headline ::= header section? headline*
 
 //////
-header ::= leading_stars [ header_keyword ' '+] [ header_priority ' '+] title [ tags ]
+header ::= leading_stars [ header_keyword space] [ header_priority space] title [ tags ] newline
 
 leading_stars ::= "regexp:^\*+ "
 // todo: check non match. (en gros: niveau un de * titi à * toto
 header_keyword ::= "TODO"
 header_priority ::= '[#' ']' //TODO: choice in list
-title ::=   word+ // "regexp:[^\r\n]+"
+title ::=   (word | space )+
 tags ::= ':'( "regexp:[[:alnum:]_@#%]+" ':')+ //todo: see how to retrieve value
 
-section ::= element+
+section ::= (element | newline)+
 element ::= paragraph | affiliated_keyword | comments | code_ligne
 
-comments ::= comment+ //todo: see how to block group them?
-comment ::= "regexp:^[ \f\t]*" '# ' "[^\r\n]*"
+comments ::= (comment newline?)+ //todo: see how to block group them?
+// TOFIX: endof file!
+comment ::= comment_opening  (word|space)+
 
-affiliated_keyword ::= '#+' "regexp:[A-Za-z]+" ':' [' ']  "regexp:[^\r\n]+" "regexp:[\r\n]"//todo: later, use object
+affiliated_keyword ::= '#+' "regexp:[A-Za-z]+" ':' [' ']  "regexp:[^\r\n]+" newline//todo: later, use object
 // not: afialted, suposed tro be only for list, img.... for now all the "#+KEYWORD
 
 code_ligne ::= leading_whitespace ':' "regexp:[^\r\n]+" // ¤ask: good using token?
 
-paragraph ::= (object "regexp:[ \f\t]+" )+ '\n\n'
+paragraph ::= (object| space)+ newline newline*
+// maybe extract new line separaot
 
-object ::="regexp:[[:alnum:]_@#%]+" //TO imporove
+object ::= word //"regexp:[[:alnum:]_@#%]+" //TO imporove
 
 // TODO: dispatch later
 /* Greater Elements  */
